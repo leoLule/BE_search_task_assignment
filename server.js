@@ -11,9 +11,15 @@ const { getAllProductsModel } = require('./models/productsModel.js');
 
 app.use(express.json());
 
+// NOTE: i m fetch all products and i will only display 5 random products in the FE , not sure yet if I will write the logic for randomize products in the FRONT or BACK end.
+
+// TODO: create Front End and display all products component (app,productsList,products)
+// NOTE:fetch in App so it is easier to pass data down
+
 app.get('/products', (req, res) => {
   try {
     const allProducts = getAllProductsModel();
+    console.log(allProducts);
     res.send(allProducts);
   } catch (err) {
     console.log(err);
