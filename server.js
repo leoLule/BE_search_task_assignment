@@ -7,7 +7,7 @@ require('dotenv').config();
 const { getAllProductsModel } = require('./models/productsModel.js');
 
 // global middleware routes
-app.use(cors({ origin: 'http://localhost:5174' }));
+app.use(cors({ origin: 'http://localhost:5173' }));
 
 app.use(express.json());
 
