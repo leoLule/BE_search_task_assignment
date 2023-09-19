@@ -24,5 +24,10 @@ function getAllProductsModel() {
   // "id": "12"
   // },
 }
+function searchProductsModel() {
+  const searchProducts = fs.readFileSync(pathToProductsJson, 'utf8');
 
-module.exports = { getAllProductsModel };
+  return JSON.parse(searchProducts);
+}
+
+module.exports = { getAllProductsModel, searchProductsModel };
