@@ -24,10 +24,10 @@ function getAllProductsModel() {
   // "id": "12"
   // },
 }
-function searchProductsModel() {
-  const searchProducts = fs.readFileSync(pathToProductsJson, 'utf8');
+// function searchProductsModel() {
+//   const searchProducts = fs.readFileSync(pathToProductsJson, 'utf8');
 
-  return JSON.parse(searchProducts);
-}
+//   return JSON.parse(searchProducts);
+// }
 
-module.exports = { getAllProductsModel, searchProductsModel };
+module.exports = { getAllProductsModel };
