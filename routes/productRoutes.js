@@ -1,9 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const {
-  getAllProductsModel,
-  // searchProductsModel,
-} = require('../models/productsModel.js');
+const { getAllProductsModel } = require('../models/productsModel.js');
+const productsController = require('../controllers/productsController');
 
 router.get('/', (req, res) => {
   try {
@@ -15,4 +13,7 @@ router.get('/', (req, res) => {
     res.status(500).send(err.message);
   }
 });
+
+router.put('/increment', productsController.incrementProduct);
+
 module.exports = router;

@@ -30,4 +30,8 @@ function getAllProductsModel() {
 //   return JSON.parse(searchProducts);
 // }
 
-module.exports = { getAllProductsModel };
+function incrementProductModel() {
+  //logic to connect to DB to increment
+}
+
+module.exports = { getAllProductsModel, incrementProductModel };

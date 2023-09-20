@@ -1,12 +1,90 @@
-// const { searchProductsModel } = require('../models/productsModel');
-// const getSearch = async (req, res) => {
-//   console.log(req.query.keywords);
+const { incrementProductModel } = require('../models/productsModel');
+
+// const incrementProduct = async (req, res) => {
 //   try {
-//     const searchedProduct = await searchProductsModel(req.query.keywords);
-//     res.send(searchedProduct);
+//     // await logic
+
+//       const { id } = req.body;
+
+//       // Find the product by ID
+//       const product = products.find((p) => p.id === id);
+
+//       if (!product) {
+//         return res.status(404).json({ message: 'Product not found' });
+//       }
+
+//       // Increment the score
+//       product.score = (parseInt(product.score) + 1).toString();
+
+//       // Update the JSON file (in-memory data)
+//       // You may want to save it to a file or a database here
+//       // ...
+
+//       return res.json({ score: product.score });
+//     })
 //   } catch (error) {
 //     console.log(error);
 //   }
 // };
+// const fs = require('fs');
+// const path = require('path');
+// const pathToProductsJson = path.resolve(__dirname, '../db/productsDB.json');
 
-// module.exports = { getSearch };
+// const incrementProduct = async (req, res) => {
+//   try {
+//     const { id } = req.body;
+
+//     // Find the product by ID
+//     const product = products.find((p) => p.id === id);
+
+//     if (!product) {
+//       return res.status(404).json({ message: 'Product not found' });
+//     }
+
+//     // Increment the score
+//     product.score = (parseInt(product.score) + 1).toString();
+
+//     // Write the updated data back to the JSON file
+//     const updatedData = JSON.stringify(products, null, 2);
+//     fs.writeFileSync(pathToProductsJson, updatedData);
+//     return res.json({ score: product.score });
+//   } catch (error) {
+//     console.log(error);
+//     res.status(500).json({ message: 'Internal server error' });
+//   }
+// };
+
+const fs = require('fs');
+const path = require('path');
+const pathToProductsJson = path.resolve(__dirname, '../db/productsDB.json');
+
+const incrementProduct = async (req, res) => {
+  try {
+    // Load the product data from the JSON file
+    const rawData = fs.readFileSync(pathToProductsJson);
+    const products = JSON.parse(rawData);
+
+    const { id } = req.body;
+
+    // Find the product by ID
+    const product = products.find((p) => p.id === id);
+
+    if (!product) {
+      return res.status(404).json({ message: 'Product not found' });
+    }
+
+    // Increment the score
+    product.score = (parseInt(product.score) + 1).toString();
+
+    // Write the updated data back to the JSON file
+    const updatedData = JSON.stringify(products, null, 2);
+    fs.writeFileSync(pathToProductsJson, updatedData);
+
+    return res.json({ score: product.score });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+};
+
+module.exports = { incrementProduct };
