@@ -5,7 +5,6 @@ const PORT = process.env.PORT || 8080;
 const productRouters = require('./routes/productRoutes');
 require('dotenv').config();
 
-// global middleware routes
 app.use(cors({ origin: 'http://localhost:5173' }));
 
 app.use(express.json());

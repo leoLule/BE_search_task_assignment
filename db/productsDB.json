@@ -6,7 +6,7 @@
       "cream",
       "pink"
     ],
-    "score": "9",
+    "score": "12",
     "id": "0"
   },
   {
@@ -15,7 +15,7 @@
       "gold",
       "hair"
     ],
-    "score": "7",
+    "score": "12",
     "id": "1"
   },
   {
@@ -24,7 +24,7 @@
       "blue",
       "liquid"
     ],
-    "score": "5",
+    "score": "8",
     "id": "2"
   },
   {
@@ -32,7 +32,7 @@
     "keywords": [
       "black"
     ],
-    "score": "6",
+    "score": "7",
     "id": "3"
   },
   {
@@ -58,7 +58,7 @@
     "keywords": [
       "white"
     ],
-    "score": "2",
+    "score": "5",
     "id": "6"
   },
   {
@@ -67,7 +67,7 @@
       "pink",
       "hand cream"
     ],
-    "score": "4",
+    "score": "5",
     "id": "7"
   },
   {
@@ -115,7 +115,7 @@
   {
     "path": "https://drive.google.com/file/d/1M9GVy2S82qDkUFbD9rS483WlXWzdvoID/view?usp=share_link",
     "keywords": [],
-    "score": "2",
+    "score": "3",
     "id": "13"
   },
   {
@@ -124,7 +124,7 @@
       "lipstick",
       "red"
     ],
-    "score": "3",
+    "score": "4",
     "id": "14"
   }
 ]

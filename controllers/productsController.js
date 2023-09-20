@@ -1,36 +1,31 @@
-const { incrementProductModel } = require('../models/productsModel');
+const {
+  incrementProductModel,
+  getAllProductsModel,
+} = require('../models/productsModel');
 
-const fs = require('fs');
-const path = require('path');
-const pathToProductsJson = path.resolve(__dirname, '../db/productsDB.json');
-
-const incrementProduct = async (req, res) => {
+const getAllProducts = (req, res) => {
   try {
-    // Load the product data from the JSON file
-    const rawData = fs.readFileSync(pathToProductsJson);
-    const products = JSON.parse(rawData);
+    const allProducts = getAllProductsModel();
+    res.send(allProducts);
+  } catch (err) {
+    console.log(err);
+    res.status(500).send(err.message);
+  }
+};
 
-    const { id } = req.body;
-
-    // Find the product by ID
-    const product = products.find((p) => p.id === id);
-
-    if (!product) {
-      return res.status(404).json({ message: 'Product not found' });
+const incrementProduct = (req, res) => {
+  try {
+    const id = req.params.id;
+    const productData = incrementProductModel(id);
+    if (!productData.ok) {
+      return res.status(404).json({ message: productData.message });
     }
 
-    // Increment the score
-    product.score = (parseInt(product.score) + 1).toString();
-
-    // Write the updated data back to the JSON file
-    const updatedData = JSON.stringify(products, null, 2);
-    fs.writeFileSync(pathToProductsJson, updatedData);
-
-    return res.json({ score: product.score });
+    return res.json(productData);
   } catch (error) {
     console.log(error);
     res.status(500).json({ message: 'Internal server error' });
   }
 };
 
-module.exports = { incrementProduct };
+module.exports = { incrementProduct, getAllProducts };
